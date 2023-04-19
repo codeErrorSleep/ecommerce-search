@@ -1,7 +1,5 @@
 package entity
 
-type QueryListReq struct {
-	Name  string
-	Price int
-	Type  string
+type QueryBySpuIDReq struct {
+	SpuID string `json:"spu_id"`
 }
