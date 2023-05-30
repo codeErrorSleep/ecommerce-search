@@ -28,5 +28,6 @@ func route() *gin.Engine {
 
 	// query es 直接查,后面直接分页
 	r.POST("/query", es.QueryBySpuID)
+	r.POST("/query", es.QueryByGoodsName)
 	return r
 }

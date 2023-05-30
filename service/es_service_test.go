@@ -2,10 +2,12 @@ package service
 
 import (
 	"ecommerce-search/conf"
+	"ecommerce-search/entity"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func initEs() {
@@ -20,12 +22,31 @@ func TestGetInfoBySpuID(t *testing.T) {
 		return
 	}
 
-	spuID := "dfadsfasdfasdf"
-	ret, err := GetInfoBySpuID(spuID)
+	spuID := "c11a8df3-5eb"
+	err = GetInfoBySpuID(spuID)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(ret)
+	// fmt.Println(ret)
 	assert.Nil(t, err)
-	assert.NotNil(t, ret)
+	// assert.NotNil(t, ret)
+}
+
+// TestGetListByGoodsName 测试搜索
+func TestGetListByGoodsName(t *testing.T) {
+	err := conf.NewEs()
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	req := entity.QueryByGoodsName{
+		GoodsName: "备里运中年联",
+	}
+	err = GetListByGoodsName(req)
+	if err != nil {
+		fmt.Println(err)
+	}
+	// fmt.Println(ret)
+	assert.Nil(t, err)
+	// assert.NotNil(t, ret)
 }
